@@ -7,19 +7,19 @@ interface JsonCommandOptions {
 @Command({ name: 'json-command', description: 'Command that takes JSON Argument' })
 export class JsonCommand extends CommandRunner {
 
-	  async run(_passedParams: string[], options: JsonCommandOptions): Promise<void> {
-		      console.log(_passedParams);
-			      console.log(options);
-				      console.log(process.argv);
-					    }
+  async run(_passedParams: string[], options: JsonCommandOptions): Promise<void> {
+    console.log("Processed successfully!");
+	console.log(options);
+  }
 
-						  @Option({
-							      flags: '--json <json>',
-								      description: 'JSON Argument',
-									      required: true,
-										    })
-											  parseJsonOption(val: string): string {
-												      return val;
-													    }
+  @Option({
+    flags: '--json <json>',
+    description: 'JSON Argument',
+    required: true,
+  })
+  parseJsonOption(val: string): string {
+	console.log(process.argv);
+	return JSON.parse(val);
+  }
 }
 
